@@ -1,0 +1,121 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define ARCHIVE &kp LC(LS(N1))
+#define APPLAUNCHER &kp LG(TAB)
+#define KT(mod) &hold_tog mod mod
+
+&caps_word {
+    continue-list = <MINUS UNDERSCORE BKSP DEL LEFT RIGHT>;
+};
+
+/ { 
+    behaviors {
+        mto: mom_to_layers {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MOM_TO_LAYERS";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <250>;
+            bindings = <&mo>, <&to>;
+        };
+        mkp: mom_key_press {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MOM_KEY_PRESS";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <250>;
+            quick-tap-ms = <200>;
+            global-quick-tap;
+            bindings = <&mo>, <&kp>;
+        };        
+        hm: home_mod {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOME_MOD";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <250>;
+            quick-tap-ms = <200>;
+            global-quick-tap;
+            bindings = <&kp>, <&kp>;
+        };
+        hold_tog: hold_toggle {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TOGGLE";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <250>;
+            quick-tap-ms = <200>;
+            global-quick-tap;
+            bindings = <&kp>, <&kt>;
+        };
+    };
+    macros {
+        rls_mods: rls_mods {
+            compatible = "zmk,behavior-macro";
+            label = "ZM_rls_mods";
+            #binding-cells = <0>;
+            wait-ms = <5>;
+            tap-ms = <15>;
+            bindings = <&macro_release &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>;
+        };
+    };
+    combos {    
+        compatible = "zmk,combos";
+        combo_bluetooth_next {
+            timeout-ms = <90>;
+            key-positions = <20 21 22>;
+            bindings = <&bt BT_NXT>;
+            layers = <0>;
+        };
+        combo_bluetooth_clear {
+            timeout-ms = <90>;
+            key-positions = <27 28 29>;
+            bindings = <&bt BT_CLR>;
+            layers = <0>;
+        };
+    };
+ 
+    keymap {
+        compatible = "zmk,keymap";
+        // 0  1  2  3  4    5  6  7  8  9  
+        // 10 11 12 13 14   15 16 17 18 19 
+        // 20 21 22 23 24   25 26 27 28 29
+        abc {
+            bindings = <
+                &hm LGUI Q  &hm LALT W  &hm LSHFT E  &hm LCTL R  &kp T     &kp Y         &hm RCTL U  &hm RSHFT I  &hm RALT O  &hm RGUI P 
+                &hm LGUI A  &kp S       &kp D        &kp F       &kp G     &kp H         &kp N       &kp L        &kp M       &kp BKSP 
+                &kp X       &kp C       &kp Z        &kp V       &mto 1 1  &mkp 3 SPACE  &kp B       &kp J        &kp K       &kp ENTER   
+                                                                  
+            >;
+        };
+
+        nav {
+            bindings = <
+                &hm LGUI TAB  KT(LALT)   KT(LSHFT)  KT(LCTRL)  &kp PG_UP   &kp PG_DN  &kp HOME  &kp UP      &kp END  
+                &kp ESC       &kp LC(C)  &kp LC(X)  &kp LC(V)  &kp CAPS    &kp K_APP  &kp LEFT  &kp DOWN    &kp RIGHT  &kp BKSP 
+                &kp DEL       &kp LC(Z)  &kp LC(Y)             &mto 2 2    &mto 3 0   &kp INS   &kp LA(F4)  ARCHIVE    &kp ENTER
+                                                               
+            >;
+        };
+    
+        num {
+            bindings = <
+                &hm LGUI N4  &hm LALT N3  &hm LSHFT N2  &hm LCTL N1  &kp N0      &none     &hm RCTL N6  &hm RSHFT N7  &hm RALT N8  &hm RGUI N9 
+                &kp N5       &kp F3       &kp F2        &kp F1       &none       &none     &kp F7       &kp F8        &kp F9       &kp BKSP   
+                             &kp F6       &kp F5        &kp F4                             &kp F10      &kp F11       &kp F12      &kp ENTER
+                                                                     &mto 3 3    &mto 3 0
+            >;
+        };    
+    
+        sym {
+            bindings = <
+                          &hm LALT SEMI  &hm LSHFT COMMA  &hm LCTL DOT  &rls_mods   &kp C_VOL_UP  &hm RCTL MINUS  &hm RSHFT SQT  &hm RALT EQUAL
+                &kp LPAR  &kp LBKT       &kp AT           &kp EXCL      &caps_word  &kp C_VOL_DN  &kp GRAVE       &kp AMPS       &kp STAR       &kp SLASH 
+                &kp RPAR  &kp RBKT       &none            &none                                   &kp C_MUTE      &none          APPLAUNCHER    &kp BSLH 
+                                                                        &to 0       &to 0
+            >;
+        };
+    };
+};

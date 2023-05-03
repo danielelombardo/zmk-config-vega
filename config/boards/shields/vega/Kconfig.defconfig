@@ -1,0 +1,22 @@
+config ZMK_BLE
+	default y
+
+config ZMK_USB
+	default y
+
+if SHIELD_VEGA_LEFT
+
+config ZMK_SPLIT_BLE_ROLE_CENTRAL
+	default y
+
+endif # SHIELD_VEGA_LEFT
+
+if SHIELD_VEGA_LEFT || SHIELD_VEGA_RIGHT
+
+config ZMK_KEYBOARD_NAME
+	default "_vega"
+
+config ZMK_SPLIT
+	default y
+
+endif # SHIELD_VEGA_LEFT || SHIELD_VEGA_RIGHT
