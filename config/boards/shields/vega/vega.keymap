@@ -51,6 +51,14 @@
             global-quick-tap;
             bindings = <&kp>, <&kt>;
         };
+
+        bkspdel: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BACKSPACE_DELETE";
+            #binding-cells = <0>;
+            bindings = <&kp BKSP>, <&kp DEL>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_RSFT)>;
+        };
     };
     macros {
         rls_mods: rls_mods {
@@ -86,7 +94,7 @@
         abc {
             bindings = <
                 &hm LGUI Q  &hm LALT W  &hm LSHFT E  &hm LCTL R  &kp T        &kp Y         &hm RCTL U  &hm RSHFT I  &hm RALT O  &hm RGUI P 
-                &kp A       &kp S       &kp D        &kp F       &kp G        &kp H         &kp N       &kp L        &kp M       &kp BKSP 
+                &kp A       &kp S       &kp D        &kp F       &kp G        &kp H         &kp N       &kp L        &kp M       &bkspdel 
                 &kp Z       &kp X       &kp C        &kp V       &mto 2 1     &mkp 3 SPACE  &kp B       &kp J        &kp K       &kp ENTER   
             >;
         };
@@ -94,24 +102,24 @@
         nav {
             bindings = <
                 &hm LGUI ESC  KT(LALT)   KT(LSHFT)  KT(LCTRL)  &kp PG_UP      &kp PG_DN   &kp HOME  &kp UP      &kp END    &kp DEL 
-                &kp TAB       &kp LC(C)  &kp LC(X)  &kp LC(V)  &none          &kp LA(F4)  &kp LEFT  &kp DOWN    &kp RIGHT  &kp BKSP 
-                &kp LC(Z)     &kp LC(Y)  &kp SPACE  &kp ENTER  &mto 2 2       &mto 3 0    &kp INS   &kp K_APP   ARCHIVE    &kp ENTER
+                &kp TAB       &kp LC(X)  &kp LC(C)  &kp LC(V)  &none          &kp K_APP   &kp LEFT  &kp DOWN    &kp RIGHT  &kp BKSP
+                &kp LC(Z)     &kp LC(Y)  &kp SPACE  &kp ENTER  &mto 2 2       &mto 3 0    &kp INS   &kp LA(F4)  ARCHIVE    &kp ENTER
             >;
         };
     
         num {
             bindings = <
                 &hm LGUI N5  &hm LALT N4  &hm LSHFT N3  &hm LCTL N2  &kp N1        &kp F1    &hm RCTL F2  &hm RSHFT F3  &hm RALT F4  &hm RGUI F5 
-                &kp N0       &kp N9       &kp N8        &kp N7       &kp N6        &kp F6    &kp F7       &kp F8        &kp F9       &kp F10  
-                APPLAUNCHER  SWITCHAPP    &kp CAPS      &rls_mods    &mto 3 3      &mto 3 0  &kp F11      &kp F12      
+                &kp N0       &kp N9       &kp N8        &kp N7       &kp N6        &kp F6    &kp F7       &kp F8        &kp F9       &bkspdel   
+                APPLAUNCHER  SWITCHAPP    &kp CAPS      &rls_mods    &mto 3 3      &mto 3 0  &kp F10      &kp F11       &kp F12      &kp ENTER 
             >;
         };    
     
         sym {
             bindings = <
                 &hm LGUI AT  &hm LALT SEMI  &hm LSHFT COMMA  &hm LCTL DOT  &kp EXCL      &kp BSLH  &hm RCTL MINUS  &hm RSHFT SQT  &hm RALT EQUAL  &hm RGUI SLASH 
-                &kp LPAR     &kp RPAR       &caps_word       &rls_mods     &kp GRAVE     &kp STAR  &kp UNDER       &kp DQT        &kp AMPS        &kp BKSP  
-                &kp LBKT     &kp RBKT       &kp C_BRI_DN     &kp C_BRI_UP  &to 0         &to 0     &kp C_VOL_UP    &kp C_VOL_DN   &kp C_MUTE      &kp ENTER 
+                &kp LPAR     &kp LBKT       &caps_word       &rls_mods     &kp GRAVE     &kp STAR  &kp UNDER       &kp DQT        &kp AMPS        &bkspdel  
+                &kp RPAR     &kp RBKT       &kp C_BRI_DN     &kp C_BRI_UP  &to 0         &to 0     &kp C_VOL_UP    &kp C_VOL_DN   &kp C_MUTE      &kp ENTER 
             >;
         };
     };
