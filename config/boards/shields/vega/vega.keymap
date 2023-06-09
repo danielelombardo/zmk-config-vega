@@ -51,6 +51,16 @@
             global-quick-tap;
             bindings = <&kp>, <&kt>;
         };
+        hold_caps: hold_caps {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_CAPS";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            global-quick-tap;
+            bindings = <&kp>, <&caps_word>;
+        };
 
         bkspdel: backspace_delete {
             compatible = "zmk,behavior-mod-morph";
@@ -109,25 +119,25 @@
 
         num {
             bindings = <
-                &hm LGUI N5  &hm LALT N4  &hm LSHFT N3  &hm LCTL N2  &kp N1     &kp F1  &hm RCTL F2  &hm RSHFT F3  &hm RALT F4  &hm RGUI F5 
-                &kp N0       &kp N9       &kp N8        &kp N7       &kp N6     &kp F6  &kp F7       &kp F8        &kp F9       &bkspdel   
-                SWITCHAPP    &to 3        &none         &none        &mto 2 1   &to 0   &kp F10      &kp F11       &kp F12      &kp ENTER 
+                &hm LGUI N5  &hm LALT N4  &hm LSHFT N3  &hm LCTL N2  &kp N1       &kp F1  &hm RCTL F2  &hm RSHFT F3  &hm RALT F4  &hm RGUI F5 
+                &kp N0       &kp N9       &kp N8        &kp N7       &kp N6       &kp F6  &kp F7       &kp F8        &kp F9       &bkspdel   
+                SWITCHAPP    &to 3        &none         &none        &mto 2 1     &to 0   &kp F10      &kp F11       &kp F12      &kp ENTER 
             >;
         };    
     
         sym {
             bindings = <
-                &hm LGUI ESC  &hm LALT SEMI  &hm LSHFT COMMA  &hm LCTL DOT    &rls_mods     &hm CAPS caps_word  &hm RCTL MINUS  &hm RSHFT SQT  &hm RALT EQUAL  &hm RGUI SLASH 
-                &kp TAB       &hm RPAR LPAR  &kp AT           &hm EXCL QMARK  &kp GRAVE     &kp STAR            &kp UNDER       &kp DQT        &kp AMPS        &none 
-                &kp BSLH      &hm RBKT LBKT  &kp C_BRI_DN     &kp C_BRI_UP    &to 0         &mto 3 3            &kp C_VOL_UP    &kp C_VOL_DN   &kp C_MUTE      APPLAUNCHER  
+                &hm LGUI ESC  &hm LALT SEMI  &hm LSHFT COMMA  &hm LCTL DOT    &rls_mods     &hold_caps CAPS   &hm RCTL MINUS  &hm RSHFT SQT  &hm RALT EQUAL  &hm RGUI SLASH 
+                &kp TAB       &hm RPAR LPAR  &kp AT           &hm EXCL QMARK  &kp GRAVE     &kp STAR          &kp UNDER       &kp DQT        &kp AMPS        &none 
+                &kp BSLH      &hm RBKT LBKT  &kp C_BRI_DN     &kp C_BRI_UP    &td0          &mto 3 3          &kp C_VOL_UP    &kp C_VOL_DN   &kp C_MUTE      APPLAUNCHER  
             >;
         };
 
         nav {
             bindings = <
-                &hm LGUI ESC  KT(LALT)         KT(LSHFT)  KT(LCTRL)  &rls_mods   &kp PG_UP   &kp HOME  &kp UP      &kp END    &kp PG_DN  
-                &kp TAB       &hm LC(Y) LC(Z)  &kp LC(C)  &kp LC(V)  &none       &kp K_APP   &kp LEFT  &kp DOWN    &kp RIGHT  &bkspdel  
-                SWITCHAPP     &kp LC(X)        &kp SPACE  &kp ENTER  &td0        &to 0       &kp INS   &kp LA(F4)  ARCHIVE    &kp ENTER  
+                &hm LGUI ESC  KT(LALT)         KT(LSHFT)  KT(LCTRL)  &rls_mods     &kp PG_UP   &kp HOME  &kp UP      &kp END    &kp PG_DN  
+                &kp TAB       &hm LC(Y) LC(Z)  &kp LC(C)  &kp LC(V)  &none         &kp K_APP   &kp LEFT  &kp DOWN    &kp RIGHT  &bkspdel  
+                SWITCHAPP     &kp LC(X)        &kp SPACE  &kp ENTER  &td0          &to 0       &kp INS   &kp LA(F4)  ARCHIVE    &kp ENTER  
             >;
         };
     
