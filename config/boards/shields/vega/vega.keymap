@@ -51,16 +51,6 @@
             global-quick-tap;
             bindings = <&kp>, <&kt>;
         };
-        hold_caps: hold_caps {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_CAPS";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-            global-quick-tap;
-            bindings = <&kp>, <&caps_word>;
-        };
 
         bkspdel: backspace_delete {
             compatible = "zmk,behavior-mod-morph";
@@ -127,9 +117,9 @@
     
         sym {
             bindings = <
-                &hm LGUI ESC  &hm LALT SEMI  &hm LSHFT COMMA  &hm LCTL DOT    &rls_mods     &hold_caps CAPS   &hm RCTL MINUS  &hm RSHFT SQT  &hm RALT EQUAL  &hm RGUI SLASH 
-                &kp TAB       &hm RPAR LPAR  &kp AT           &hm EXCL QMARK  &kp GRAVE     &kp STAR          &kp UNDER       &kp DQT        &kp AMPS        &none 
-                &kp BSLH      &hm RBKT LBKT  &kp C_BRI_DN     &kp C_BRI_UP    &td0          &mto 3 3          &kp C_VOL_UP    &kp C_VOL_DN   &kp C_MUTE      APPLAUNCHER  
+                &hm LGUI ESC  &hm LALT SEMI  &hm LSHFT COMMA  &hm LCTL DOT    &rls_mods     &kp CAPS  &hm RCTL MINUS  &hm RSHFT SQT  &hm RALT EQUAL  &hm RGUI SLASH 
+                &kp TAB       &hm RPAR LPAR  &kp AT           &hm EXCL QMARK  &kp GRAVE     &kp STAR  &kp UNDER       &kp DQT        &kp AMPS        &caps_word 
+                &kp BSLH      &hm RBKT LBKT  &kp C_BRI_DN     &kp C_BRI_UP    &td0          &mto 3 3  &kp C_VOL_UP    &kp C_VOL_DN   &kp C_MUTE      APPLAUNCHER  
             >;
         };
 
