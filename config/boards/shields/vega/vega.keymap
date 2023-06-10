@@ -4,7 +4,7 @@
 
 #define ARCHIVE &kp LC(LS(N1))
 #define APPLAUNCHER &kp LG(TAB)
-#define SWITCHAPP &kp LA(TAB)
+#define SWITCHAPP &hm LG(TAB) LA(TAB)
 #define KT(mod) &hold_tog mod mod
 
 &caps_word {
@@ -64,8 +64,8 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_0";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&to 0>, <&to 0>;
+            tapping-term-ms = <300>;
+            bindings = <&tog 3>, <&to 0>;
         };
     };
     macros {
@@ -109,9 +109,9 @@
 
         num {
             bindings = <
-                &hm LGUI N5  &hm LALT N4  &hm LSHFT N3  &hm LCTL N2  &kp N1       &kp F1  &hm RCTL F2  &hm RSHFT F3  &hm RALT F4  &hm RGUI F5 
-                &kp N0       &kp N9       &kp N8        &kp N7       &kp N6       &kp F6  &kp F7       &kp F8        &kp F9       &bkspdel   
-                SWITCHAPP    &to 3        &none         &none        &mto 2 1     &to 0   &kp F10      &kp F11       &kp F12      &kp ENTER 
+                &hm LGUI N5  &hm LALT N4  &hm LSHFT N3  &hm LCTL N2  &kp N1       &kp F1    &hm RCTL F2  &hm RSHFT F3  &hm RALT F4  &hm RGUI F5 
+                &kp N0       &kp N9       &kp N8        &kp N7       &kp N6       &kp F6    &kp F7       &kp F8        &kp F9       &bkspdel   
+                SWITCHAPP    &kp LG(1)    &kp LG(2)     &kp LG(3)    &mto 2 3     &mto 3 0  &kp F10      &kp F11       &kp F12      &kp ENTER 
             >;
         };    
     
@@ -119,15 +119,15 @@
             bindings = <
                 &hm LGUI ESC  &hm LALT SEMI  &hm LSHFT COMMA  &hm LCTL DOT    &rls_mods     &kp CAPS  &hm RCTL MINUS  &hm RSHFT SQT  &hm RALT EQUAL  &hm RGUI SLASH 
                 &kp TAB       &hm RPAR LPAR  &kp AT           &hm EXCL QMARK  &kp GRAVE     &kp STAR  &kp UNDER       &kp DQT        &kp AMPS        &caps_word 
-                &kp BSLH      &hm RBKT LBKT  &kp C_BRI_DN     &kp C_BRI_UP    &td0          &mto 3 3  &kp C_VOL_UP    &kp C_VOL_DN   &kp C_MUTE      APPLAUNCHER  
+                &kp BSLH      &hm RBKT LBKT  &kp C_BRI_DN     &kp C_BRI_UP    &none         &mto 3 1  &kp C_VOL_UP    &kp C_VOL_DN   &kp C_MUTE      SWITCHAPP  
             >;
         };
 
         nav {
             bindings = <
-                &hm LGUI ESC  KT(LALT)         KT(LSHFT)  KT(LCTRL)  &rls_mods     &kp PG_UP   &kp HOME  &kp UP      &kp END    &kp PG_DN  
-                &kp TAB       &hm LC(Y) LC(Z)  &kp LC(C)  &kp LC(V)  &none         &kp K_APP   &kp LEFT  &kp DOWN    &kp RIGHT  &bkspdel  
-                SWITCHAPP     &kp LC(X)        &kp SPACE  &kp ENTER  &td0          &to 0       &kp INS   &kp LA(F4)  ARCHIVE    &kp ENTER  
+                &hm LGUI ESC  KT(LALT)         KT(LSHFT)  KT(LCTRL)            &rls_mods     &kp PG_UP   &kp HOME  &kp UP      &kp END    &kp PG_DN  
+                &kp TAB       &hm LC(Y) LC(Z)  &kp LC(C)  &hm LS(LC(V)) LC(V)  &none         &kp K_APP   &kp LEFT  &kp DOWN    &kp RIGHT  &bkspdel  
+                SWITCHAPP     &kp LC(X)        &none      &kp ENTER            &td0          &kp SPACE   &kp INS   &kp LA(F4)  ARCHIVE    &kp ENTER  
             >;
         };
     
